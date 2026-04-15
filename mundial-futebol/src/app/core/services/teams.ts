@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Team } from '../models/teams';
 
@@ -11,9 +11,13 @@ export class TeamService {
 
   constructor(private http: HttpClient) {}
 
-  getTeams(): Observable<Team[]> {
-    return this.http.get<Team[]>(this.API_URL);
-  }
+ getTeams(): Observable<Team[]> {
+  const headers = new HttpHeaders({
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache'
+  });
+  return this.http.get<Team[]>(this.API_URL, { headers });
+}
 
   getTeamById(id: string): Observable<Team> {
     return this.http.get<Team>(`${this.API_URL}/${id}`);

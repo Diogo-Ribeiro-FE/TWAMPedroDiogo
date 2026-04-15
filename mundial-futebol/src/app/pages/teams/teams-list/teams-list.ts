@@ -17,10 +17,11 @@ export class TeamsListComponent implements OnInit {
   constructor(private teamService: TeamService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.teamService.getTeams().subscribe(data => {
-      this.teams = data;
-    });
-  }
+  this.teamService.getTeams().subscribe(data => {
+    this.teams = [...data];
+    this.cdr.detectChanges();
+  });
+}
 
   deleteTeam(id: string) {
     this.teamService.deleteTeam(id).subscribe(() => {
