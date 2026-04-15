@@ -1,8 +1,34 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Team } from '../models/teams';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class Teams {
-  
+export class TeamService {
+  private readonly API_URL='https://69df4ca9d6de26e1192910c6.mockapi.io/Teams';
+
+  constructor(private http: HttpClient) {}
+
+  getTeams(): Observable<Team[]> {
+    return this.http.get<Team[]>(this.API_URL);
+  }
+
+  getTeamById(id: string): Observable<Team> {
+    return this.http.get<Team>(`${this.API_URL}/${id}`);
+  }
+
+  createTeam(team: Team): Observable<Team> {
+    return this.http.post<Team>(this.API_URL, team);
+  }
+
+  updateTeam(id: string, team: Team): Observable<Team> {
+    return this.http.put<Team>(`${this.API_URL}/${id}`, team);
+  }
+
+  deleteTeam(id: string): Observable<any> {
+    return this.http.delete(`${this.API_URL}/${id}`);
+  }
 }
+
