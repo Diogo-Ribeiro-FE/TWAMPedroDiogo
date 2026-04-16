@@ -19,6 +19,10 @@ export class PlayersServices {
     return this.http.get<Player>(`${this.API_URL}/${id}`);
   }
 
+  getPlayersByTeam(teamId: string): Observable<Player[]> {
+    return this.http.get<Player[]>(`${this.API_URL}?teamId=${teamId}`);
+  }
+
   createPlayer(player: Player): Observable<Player> {
     return this.http.post<Player>(this.API_URL, player);
   }
