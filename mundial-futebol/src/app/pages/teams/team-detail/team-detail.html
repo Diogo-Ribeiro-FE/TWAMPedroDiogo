@@ -18,6 +18,38 @@
         </div>
       </div>
     </div>
+
+    <!-- Jogadores da seleção -->
+    <h4 class="mt-4">Jogadores</h4>
+    @if (players.length === 0) {
+      <p>Nenhum jogador encontrado para esta seleção.</p>
+    } @else {
+      <table class="table table-striped mt-2">
+        <thead>
+          <tr>
+            <th>Foto</th>
+            <th>Nome</th>
+            <th>Posição</th>
+            <th>Nº</th>
+            <th>Clube</th>
+            <th>Titular</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (player of players; track player.id) {
+            <tr [class.table-success]="player.isStartingXI">
+              <td><img [src]="player.fotoUrl" width="40" alt="foto"></td>
+              <td>{{ player.name }}</td>
+              <td>{{ player.position }}</td>
+              <td>{{ player.number }}</td>
+              <td>{{ player.club }}</td>
+              <td>{{ player.isStartingXI ? '✅' : '' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+
   } @else {
     <p>A carregar...</p>
   }
