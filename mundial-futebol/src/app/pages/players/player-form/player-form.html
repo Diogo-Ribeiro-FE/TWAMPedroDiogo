@@ -1,1 +1,58 @@
-<p>player-form works!</p>
+<div class="container mt-4">
+  <h2>{{ isEdit ? 'Editar Jogador' : 'Novo Jogador' }}</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Nome</label>
+      <input type="text" class="form-control" [(ngModel)]="player.name" name="name" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Posição</label>
+      <input type="text" class="form-control" [(ngModel)]="player.position" name="position" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Número de Camisola</label>
+      <input type="number" class="form-control" [(ngModel)]="player.number" name="number" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">ID da Seleção</label>
+      <input type="text" class="form-control" [(ngModel)]="player.teamId" name="teamId" required>
+    </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" [(ngModel)]="player.isStartingXI" name="isStartingXI" id="isStartingXI">
+      <label class="form-check-label" for="isStartingXI">Titular provável</label>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">URL da Foto</label>
+      <input type="text" class="form-control" [(ngModel)]="player.fotoUrl" name="fotoUrl">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Data de Nascimento</label>
+      <input type="date" class="form-control" [(ngModel)]="player.birthDate" name="birthDate" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Clube</label>
+      <input type="text" class="form-control" [(ngModel)]="player.club" name="club" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Caps</label>
+      <input type="number" class="form-control" [(ngModel)]="player.caps" name="caps" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Golos</label>
+      <input type="number" class="form-control" [(ngModel)]="player.goals" name="goals" required>
+    </div>
+
+    <button type="submit" class="btn btn-success me-2">Guardar</button>
+    <a routerLink="/players" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
