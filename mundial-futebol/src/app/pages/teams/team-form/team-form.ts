@@ -23,7 +23,7 @@ export class TeamForm implements OnInit {
   };
 
   isEdit = false;
-  id: string | null = null;
+  id: string | null = null;  // Armazena o ID caso tenha, caso não haja é nulo
 
  constructor(
   private teamService: TeamService,
@@ -43,13 +43,14 @@ export class TeamForm implements OnInit {
   }
 }
 
+
   onSubmit() {
     if (this.isEdit && this.id) {
-      this.teamService.updateTeam(this.id, this.team).subscribe(() => {
+      this.teamService.updateTeam(this.id, this.team).subscribe(() => {     //Modo Edição
         this.router.navigate(['/teams']);
-      });
+      });                                                                   
     } else {
-      this.teamService.createTeam(this.team).subscribe(() => {
+      this.teamService.createTeam(this.team).subscribe(() => {   //Modo criação de seleção pois o isEdit é falso se não estava no If e não no Else
         this.router.navigate(['/teams']);
       });
     }

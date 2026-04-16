@@ -9,5 +9,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
+
 export class HomeComponent { 
+  //A landing page não está a precisar de lógica por isso não tem nada aqui
 }

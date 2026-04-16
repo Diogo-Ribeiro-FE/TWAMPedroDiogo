@@ -6,8 +6,9 @@ import { Team } from '../models/teams';
 @Injectable({
   providedIn: 'root'
 })
+
 export class TeamService {
-  private readonly API_URL='https://69df4ca9d6de26e1192910c6.mockapi.io/Teams';
+  private readonly API_URL='https://69df4ca9d6de26e1192910c6.mockapi.io/Teams';  //Isto é a nossa API onde está guardado todos os dados
 
   constructor(private http: HttpClient) {}
 

@@ -12,20 +12,20 @@ import { TeamService } from '../../../core/services/teams';
   styleUrl: './teams-list.css'
 })
 export class TeamsListComponent implements OnInit {
-  teams: Team[] = [];
+  teams: Team[] = []; // Array que armazena a lista de equipas
 
   constructor(private teamService: TeamService, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  ngOnInit() {      
   this.teamService.getTeams().subscribe(data => {
-    this.teams = [...data];
+    this.teams = [...data];                   // Este metodo é executado quando o componente inicia
     this.cdr.detectChanges();
   });
 }
 
   deleteTeam(id: string) {
     this.teamService.deleteTeam(id).subscribe(() => {
-      this.teams = this.teams.filter(t => String(t.id) !== String(id));
+      this.teams = this.teams.filter(t => String(t.id) !== String(id));   // Metodo de deletar equipa
       this.cdr.detectChanges();
     });
   }

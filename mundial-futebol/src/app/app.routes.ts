@@ -10,8 +10,8 @@ import { HomeComponent } from './pages/home/home';
 //para testarmos algo, por exemplo quis testar o teams-list.html, tens que adicionar aqui ás rotas
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'teams', component: TeamsListComponent },
+  { path: '', component: HomeComponent },       // O site inicializa na LandingPage
+  { path: 'teams', component: TeamsListComponent },    //Se acabar em teams o url, vai para a team-list, assim por adiante.
   { path: 'teams/new', component: TeamForm },
   { path: 'teams/edit/:id', component: TeamForm },
   { path: 'teams/:id', component: TeamDetail },
