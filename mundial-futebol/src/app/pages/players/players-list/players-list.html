@@ -1,1 +1,39 @@
-<p>players-list works!</p>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Jogadores</h2>
+    <a routerLink="/players/new" class="btn btn-success">+ Novo Jogador</a>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Foto</th>
+        <th>Nome</th>
+        <th>Posição</th>
+        <th>Nº</th>
+        <th>Clube</th>
+        <th>Caps</th>
+        <th>Golos</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (player of players; track player.id) {
+        <tr>
+          <td><img [src]="player.fotoUrl" width="40" alt="foto"></td>
+          <td>{{ player.name }}</td>
+          <td>{{ player.position }}</td>
+          <td>{{ player.number }}</td>
+          <td>{{ player.club }}</td>
+          <td>{{ player.caps }}</td>
+          <td>{{ player.goals }}</td>
+          <td>
+            <a [routerLink]="['/players', player.id]" class="btn btn-info btn-sm me-1">Ver</a>
+            <a [routerLink]="['/players/edit', player.id]" class="btn btn-warning btn-sm me-1">Editar</a>
+            <button (click)="deletePlayer(player.id!)" class="btn btn-danger btn-sm">Remover</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
