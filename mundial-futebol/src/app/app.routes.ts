@@ -5,10 +5,12 @@ import { TeamDetail } from './pages/teams/team-detail/team-detail';
 import { PlayersListComponent } from './pages/players/players-list/players-list';
 import { PlayerForm } from './pages/players/player-form/player-form';
 import { PlayerDetail } from './pages/players/player-detail/player-detail';
+import { HomeComponent } from './pages/home/home';
 
 //para testarmos algo, por exemplo quis testar o teams-list.html, tens que adicionar aqui ás rotas
 
 export const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'teams', component: TeamsListComponent },
   { path: 'teams/new', component: TeamForm },
   { path: 'teams/edit/:id', component: TeamForm },
@@ -17,5 +19,5 @@ export const routes: Routes = [
   { path: 'players/new', component: PlayerForm },
   { path: 'players/edit/:id', component: PlayerForm },
   { path: 'players/:id', component: PlayerDetail },
-  { path: '', redirectTo: 'teams', pathMatch: 'full' }
+  { path: '', redirectTo: '', pathMatch: 'full' }
 ];
