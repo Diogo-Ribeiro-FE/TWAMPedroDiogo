@@ -1,1 +1,33 @@
-<p>team-form works!</p>
+<div class="container mt-4">
+  <h2>{{ isEdit ? 'Editar Seleção' : 'Nova Seleção' }}</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">País</label>
+      <input type="text" class="form-control" [(ngModel)]="team.country" name="country" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Confederação</label>
+      <input type="text" class="form-control" [(ngModel)]="team.confederation" name="confederation" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Selecionador</label>
+      <input type="text" class="form-control" [(ngModel)]="team.coach" name="coach" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Ranking FIFA</label>
+      <input type="number" class="form-control" [(ngModel)]="team.fifaRanking" name="fifaRanking" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">URL da Bandeira</label>
+      <input type="text" class="form-control" [(ngModel)]="team.flagUrl" name="flagUrl">
+    </div>
+
+    <button type="submit" class="btn btn-success me-2">Guardar</button>
+    <a routerLink="/teams" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
