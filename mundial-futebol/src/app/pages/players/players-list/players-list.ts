@@ -29,4 +29,16 @@ export class PlayersListComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
+  sortPlayers(criterio: 'goals' | 'caps', ordem: 'asc' | 'desc') {
+  this.players.sort((a, b) => {
+    const valA = a[criterio] || 0;
+    const valB = b[criterio] || 0;
+    
+    if (ordem === 'asc') {
+      return valA - valB;
+    } else {
+      return valB - valA;
+    }
+  });
+}
 }
