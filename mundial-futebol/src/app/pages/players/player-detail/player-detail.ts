@@ -32,6 +32,21 @@ export class PlayerDetail implements OnInit {
     }
   }
 
+  // NOVA FUNÇÃO: Calcula a idade com base na data atual
+  getAge(birthDate: string | undefined): number {
+    if (!birthDate) return 0;
+    
+    const today = new Date();
+    const birth = new Date(birthDate);
+    let age = today.getFullYear() - birth.getFullYear();
+    const m = today.getMonth() - birth.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+      age--;
+    }
+    return age;
+  }
+
   deletePlayer() {
     if (this.id) {
       this.playerService.deletePlayer(this.id).subscribe(() => {

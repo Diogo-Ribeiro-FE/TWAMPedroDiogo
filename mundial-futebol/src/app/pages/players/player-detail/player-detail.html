@@ -49,7 +49,10 @@
               </div>
               <div class="col-sm-6">
                 <p class="mb-1 text-muted small text-uppercase fw-bold">Nascimento</p>
-                <p class="fs-5 fw-semibold">{{ player.birthDate }}</p>
+                <p class="fs-5 fw-semibold">
+                  {{ player.birthDate }}
+                   <span class="text-muted fw-normal">({{ getAge(player.birthDate) }} anos)</span>
+                </p>
               </div>
             </div>
 
