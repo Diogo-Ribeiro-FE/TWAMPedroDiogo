@@ -36,6 +36,17 @@
               <input type="text" class="form-control shadow-sm" [(ngModel)]="player.club" name="club" required>
             </div>
 
+            <div class="col-md-12">
+  <label class="form-label fw-bold">Seleção Nacional</label>
+  <select class="form-select shadow-sm" [(ngModel)]="player.teamId" name="teamId" required>
+    <option [ngValue]="''" disabled>Escolha a seleção deste atleta...</option>
+    
+    <option *ngFor="let t of teams" [value]="t.id">
+      {{ t.country }}
+    </option>
+  </select>
+</div>
+
             <div class="col-12">
               <label class="form-label fw-bold">URL da Foto</label>
               <div class="input-group shadow-sm">
