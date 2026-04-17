@@ -1,35 +1,35 @@
 <div class="container mt-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Seleções Nacionais</h2>
-    <a routerLink="/teams/new" class="btn btn-success">+ Nova Seleção</a>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">🏁 Seleções Nacionais</h2>
+    <a routerLink="/teams/new" class="btn btn-success rounded-pill px-4 shadow-sm">
+      <i class="bi bi-plus-lg me-2"></i>Nova Seleção
+    </a>
   </div>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Bandeira</th>
-        <th>País</th>
-        <th>Confederação</th>
-        <th>Selecionador</th>
-        <th>Ranking FIFA</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (team of teams; track team.id) {
-        <tr>
-          <td><img [src]="team.flagUrl" width="40" alt="bandeira"></td>
-          <td>{{ team.country }}</td>
-          <td>{{ team.confederation }}</td>
-          <td>{{ team.coach }}</td>
-          <td>{{ team.fifaRanking }}</td>
-          <td>
-            <a [routerLink]="['/teams', team.id]" class="btn btn-info btn-sm me-1">Ver</a>
-            <a [routerLink]="['/teams/edit', team.id]" class="btn btn-warning btn-sm me-1">Editar</a>
-            <button (click)="deleteTeam(team.id!)" class="btn btn-danger btn-sm">Remover</button>
-          </td>
-        </tr>
-      }
-    </tbody>
-  </table>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    @for (team of teams; track team.id) {
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-3">
+              <img [src]="team.flagUrl" class="rounded border me-3" width="60" alt="flag">
+              <div>
+                <h5 class="card-title mb-0 fw-bold">{{ team.country }}</h5>
+                <span class="text-muted small">{{ team.confederation }}</span>
+              </div>
+            </div>
+            <p class="card-text mb-1 text-muted">Treinador: <strong>{{ team.coach }}</strong></p>
+            <p class="card-text">Ranking: <span class="badge bg-secondary">#{{ team.fifaRanking }}</span></p>
+          </div>
+          <div class="card-footer bg-transparent border-top-0 d-flex gap-2 pb-3">
+            <a [routerLink]="['/teams', team.id]" class="btn btn-sm btn-info w-100">Ver</a>
+            <a [routerLink]="['/teams/edit', team.id]" class="btn btn-sm btn-outline-warning w-100">Editar</a>
+            <button (click)="deleteTeam(team.id!)" class="btn btn-sm btn-outline-danger">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
 </div>

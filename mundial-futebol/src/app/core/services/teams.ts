@@ -25,8 +25,19 @@ export class TeamService {
   }
 
   createTeam(team: Team): Observable<Team> {
-    return this.http.post<Team>(this.API_URL, team);
-  }
+  // 1. Criamos um ID simples usando a data/hora atual (garante que é único)
+  // O prefixo 't' mantém o teu padrão atual (t1, t2...)
+  const meuIdUnico = 't' + Date.now();
+
+  // 2. Criamos uma cópia dos dados da seleção e injetamos o ID
+  const novaSelecao = { 
+    ...team, 
+    id: meuIdUnico 
+  };
+
+  // 3. Enviamos o objeto já com o ID para a API
+  return this.http.post<Team>(this.API_URL, novaSelecao);
+}
 
   updateTeam(id: string, team: Team): Observable<Team> {
     return this.http.put<Team>(`${this.API_URL}/${id}`, team);

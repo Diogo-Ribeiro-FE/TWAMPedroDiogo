@@ -1,39 +1,49 @@
 <div class="container mt-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Jogadores</h2>
-    <a routerLink="/players/new" class="btn btn-success">+ Novo Jogador</a>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">🏃 Jogadores Inscritos</h2>
+    <a routerLink="/players/new" class="btn btn-success rounded-pill px-4">
+      <i class="bi bi-plus-lg"></i> Novo Jogador
+    </a>
   </div>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Foto</th>
-        <th>Nome</th>
-        <th>Posição</th>
-        <th>Nº</th>
-        <th>Clube</th>
-        <th>Caps</th>
-        <th>Golos</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (player of players; track player.id) {
+  <div class="table-responsive shadow-sm rounded border">
+    <table class="table table-hover align-middle mb-0 bg-white">
+      <thead class="table-dark">
         <tr>
-          <td><img [src]="player.fotoUrl" width="40" alt="foto"></td>
-          <td>{{ player.name }}</td>
-          <td>{{ player.position }}</td>
-          <td>{{ player.number }}</td>
-          <td>{{ player.club }}</td>
-          <td>{{ player.caps }}</td>
-          <td>{{ player.goals }}</td>
-          <td>
-            <a [routerLink]="['/players', player.id]" class="btn btn-info btn-sm me-1">Ver</a>
-            <a [routerLink]="['/players/edit', player.id]" class="btn btn-warning btn-sm me-1">Editar</a>
-            <button (click)="deletePlayer(player.id!)" class="btn btn-danger btn-sm">Remover</button>
-          </td>
+          <th>Jogador</th>
+          <th>Posição</th>
+          <th>Clube</th>
+          <th class="text-center">Golos</th>
+          <th class="text-end">Ações</th>
         </tr>
-      }
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        @for (player of players; track player.id) {
+          <tr>
+            <td>
+              <div class="d-flex align-items-center">
+                <img [src]="player.fotoUrl" class="rounded-circle border" width="45" height="45" alt="foto">
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{ player.name }}</p>
+                  <p class="text-muted mb-0 small">Camisola nº {{ player.number }}</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="badge rounded-pill bg-info text-dark">{{ player.position }}</span>
+            </td>
+            <td>{{ player.club }}</td>
+            <td class="text-center fw-bold text-primary">{{ player.goals }}</td>
+            <td class="text-end">
+              <div class="btn-group shadow-sm">
+                <a [routerLink]="['/players', player.id]" class="btn btn-sm btn-outline-primary">Ver</a>
+                <a [routerLink]="['/players/edit', player.id]" class="btn btn-sm btn-outline-warning">Editar</a>
+                <button (click)="deletePlayer(player.id!)" class="btn btn-sm btn-outline-danger">Apagar</button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>

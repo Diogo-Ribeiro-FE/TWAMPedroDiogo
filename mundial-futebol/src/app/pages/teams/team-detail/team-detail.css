@@ -1,0 +1,30 @@
+/* 1. Header com Gradiente Real - Agora vais notar! */
+.card.bg-dark {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    border-bottom: 4px solid #0d6efd !important; /* Linha azul no fundo do header */
+}
+
+/* 2. Tabela Interativa */
+.table tbody tr:hover {
+    background-color: #eef6ff !important; /* Um azul mais visível no hover */
+    transition: 0.2s;
+}
+
+/* 3. Ícone de Titular (Check Verde) */
+.bi-check-circle-fill {
+    color: #198754;
+    filter: drop-shadow(0 0 3px rgba(25, 135, 84, 0.4));
+}
+
+/* 4. Título com a tal linha azul (que agora vai aparecer) */
+h4.text-primary {
+    border-bottom: 3px solid #0d6efd;
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+/* 5. Efeito de elevação nos botões */
+.btn-warning:hover, .btn-danger:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+}

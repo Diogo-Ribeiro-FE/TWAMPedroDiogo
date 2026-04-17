@@ -1,0 +1,20 @@
+.card {
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+.badge {
+    padding: 0.5em 1em;
+    font-weight: 500;
+}
+
+.btn-info {
+    background-color: #0dcefd !important;
+    color: white !important;
+    border: none !important;
+}

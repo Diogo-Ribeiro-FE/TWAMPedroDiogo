@@ -1,33 +1,48 @@
-<div class="container mt-4">
-  <h2>{{ isEdit ? 'Editar Seleção' : 'Nova Seleção' }}</h2>
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-success text-white p-3 text-center">
+          <h3 class="mb-0"><i class="bi bi-globe-europe-africa me-2"></i>{{ isEdit ? 'Editar Seleção' : 'Nova Seleção' }}</h3>
+        </div>
+        <div class="card-body p-4">
+          <form (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label class="form-label fw-bold">País</label>
+              <input type="text" class="form-control shadow-sm" [(ngModel)]="team.country" name="country" placeholder="Ex: Portugal" required>
+            </div>
 
-  <form (ngSubmit)="onSubmit()">
-    <div class="mb-3">
-      <label class="form-label">País</label>
-      <input type="text" class="form-control" [(ngModel)]="team.country" name="country" required>
+            <div class="mb-3">
+              <label class="form-label fw-bold">Confederação</label>
+              <input type="text" class="form-control shadow-sm" [(ngModel)]="team.confederation" name="confederation" placeholder="Ex: UEFA" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-bold">Treinador Principal</label>
+              <input type="text" class="form-control shadow-sm" [(ngModel)]="team.coach" name="coach" required>
+            </div>
+
+            <div class="mb-3 text-center">
+              <label class="form-label fw-bold d-block text-start">Ranking FIFA</label>
+              <input type="range" class="form-range" min="1" max="211" [(ngModel)]="team.fifaRanking" name="fifaRanking">
+              <span class="badge bg-dark px-3 py-2 mt-2 shadow-sm">Posição atual: #{{ team.fifaRanking }}</span>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-bold">URL da Bandeira</label>
+              <div class="input-group shadow-sm">
+                <span class="input-group-text"><i class="bi bi-flag"></i></span>
+                <input type="text" class="form-control" [(ngModel)]="team.flagUrl" name="flagUrl" placeholder="https://...">
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 mt-4">
+              <button type="submit" class="btn btn-success btn-lg shadow">Confirmar Registo</button>
+              <a routerLink="/teams" class="btn btn-link text-muted text-decoration-none">Voltar à lista</a>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-
-    <div class="mb-3">
-      <label class="form-label">Confederação</label>
-      <input type="text" class="form-control" [(ngModel)]="team.confederation" name="confederation" required>
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Selecionador</label>
-      <input type="text" class="form-control" [(ngModel)]="team.coach" name="coach" required>
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Ranking FIFA</label>
-      <input type="number" class="form-control" [(ngModel)]="team.fifaRanking" name="fifaRanking" required>
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">URL da Bandeira</label>
-      <input type="text" class="form-control" [(ngModel)]="team.flagUrl" name="flagUrl">
-    </div>
-
-    <button type="submit" class="btn btn-success me-2">Guardar</button>
-    <a routerLink="/teams" class="btn btn-secondary">Cancelar</a>
-  </form>
+  </div>
 </div>

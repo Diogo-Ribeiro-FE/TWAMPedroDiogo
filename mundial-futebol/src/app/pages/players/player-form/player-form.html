@@ -1,58 +1,78 @@
-<div class="container mt-4">
-  <h2>{{ isEdit ? 'Editar Jogador' : 'Novo Jogador' }}</h2>
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white p-3">
+          <h3 class="mb-0 text-center">
+            <i class="bi bi-person-plus-fill me-2"></i>
+            {{ isEdit ? 'Editar Jogador' : 'Registar Novo Jogador' }}
+          </h3>
+        </div>
+        <div class="card-body p-4">
+          <form (ngSubmit)="onSubmit()" class="row g-3">
+            
+            <div class="col-md-8">
+              <label class="form-label fw-bold">Nome Completo</label>
+              <input type="text" class="form-control form-control-lg shadow-sm" [(ngModel)]="player.name" name="name" placeholder="Ex: Cristiano Ronaldo" required>
+            </div>
 
-  <form (ngSubmit)="onSubmit()">
-    <div class="mb-3">
-      <label class="form-label">Nome</label>
-      <input type="text" class="form-control" [(ngModel)]="player.name" name="name" required>
+            <div class="col-md-4">
+              <label class="form-label fw-bold">Nº Camisola</label>
+              <input type="number" class="form-control form-control-lg shadow-sm" [(ngModel)]="player.number" name="number" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Posição</label>
+              <select class="form-select shadow-sm" [(ngModel)]="player.position" name="position" required>
+                <option value="Guarda-redes">Guarda-redes</option>
+                <option value="Defesa">Defesa</option>
+                <option value="Médio">Médio</option>
+                <option value="Avançado">Avançado</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Clube Atual</label>
+              <input type="text" class="form-control shadow-sm" [(ngModel)]="player.club" name="club" required>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label fw-bold">URL da Foto</label>
+              <div class="input-group shadow-sm">
+                <span class="input-group-text bg-light"><i class="bi bi-image"></i></span>
+                <input type="text" class="form-control" [(ngModel)]="player.fotoUrl" name="fotoUrl" placeholder="https://...">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Golos</label>
+              <input type="number" class="form-control shadow-sm" [(ngModel)]="player.goals" name="goals">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Internacionalizações (Caps)</label>
+              <input type="number" class="form-control shadow-sm" [(ngModel)]="player.caps" name="caps">
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label fw-bold">Data de Nascimento</label>
+              <input type="date" class="form-control shadow-sm" [(ngModel)]="player.birthDate" name="birthDate" required>
+            </div>
+
+            <div class="col-12 mt-4">
+              <div class="form-check form-switch p-3 bg-light rounded border shadow-sm">
+                <input type="checkbox" class="form-check-input ms-0 me-2" [(ngModel)]="player.isStartingXI" name="isStartingXI" id="isStartingXI">
+                <label class="form-check-label fw-bold" for="isStartingXI">Definir como Titular Provável</label>
+              </div>
+            </div>
+
+            <div class="col-12 d-flex gap-2 mt-4">
+              <button type="submit" class="btn btn-primary btn-lg w-100 shadow">Guardar Dados</button>
+              <a routerLink="/players" class="btn btn-outline-secondary btn-lg w-100">Cancelar</a>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-
-    <div class="mb-3">
-      <label class="form-label">Posição</label>
-      <input type="text" class="form-control" [(ngModel)]="player.position" name="position" required>
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Número de Camisola</label>
-      <input type="number" class="form-control" [(ngModel)]="player.number" name="number" required>
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">ID da Seleção</label>
-      <input type="text" class="form-control" [(ngModel)]="player.teamId" name="teamId" required>
-    </div>
-
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" [(ngModel)]="player.isStartingXI" name="isStartingXI" id="isStartingXI">
-      <label class="form-check-label" for="isStartingXI">Titular provável</label>
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">URL da Foto</label>
-      <input type="text" class="form-control" [(ngModel)]="player.fotoUrl" name="fotoUrl">
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Data de Nascimento</label>
-      <input type="date" class="form-control" [(ngModel)]="player.birthDate" name="birthDate" required>
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Clube</label>
-      <input type="text" class="form-control" [(ngModel)]="player.club" name="club" required>
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Caps</label>
-      <input type="number" class="form-control" [(ngModel)]="player.caps" name="caps" required>
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Golos</label>
-      <input type="number" class="form-control" [(ngModel)]="player.goals" name="goals" required>
-    </div>
-
-    <button type="submit" class="btn btn-success me-2">Guardar</button>
-    <a routerLink="/players" class="btn btn-secondary">Cancelar</a>
-  </form>
+  </div>
 </div>

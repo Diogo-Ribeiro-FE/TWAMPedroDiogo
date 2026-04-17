@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importar fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+}
+
+/* FORÇAR O GRADIENTE NO HEADER (O que falhou antes) */
+.card.bg-dark {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    border: none !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+}
+
+/* EFEITO NA BANDEIRA */
+.card.bg-dark img.rounded {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    border: 3px solid rgba(255,255,255,0.2) !important;
+}
+
+.card.bg-dark img.rounded:hover {
+    transform: scale(1.1) rotate(3deg) !important;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.4)) !important;
+}
+
+/* ESTILO DA CONVOCATÓRIA */
+.table {
+    background: white;
+}
+
+.table tbody tr {
+    transition: background-color 0.2s ease !important;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05) !important;
+}
+
+/* BOTÕES MAIS "VIVOS" */
+.btn-warning {
+    background-color: #ffc107 !important;
+    border: none !important;
+    color: #000 !important;
+    font-weight: 600 !important;
+}
+
+.btn-danger {
+    background-color: #dc3545 !important;
+    border: none !important;
+    font-weight: 600 !important;
+}
+
+.btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+}

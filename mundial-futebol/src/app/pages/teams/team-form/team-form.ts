@@ -45,14 +45,17 @@ export class TeamForm implements OnInit {
 
 
   onSubmit() {
-    if (this.isEdit && this.id) {
-      this.teamService.updateTeam(this.id, this.team).subscribe(() => {     //Modo Edição
-        this.router.navigate(['/teams']);
-      });                                                                   
-    } else {
-      this.teamService.createTeam(this.team).subscribe(() => {   //Modo criação de seleção pois o isEdit é falso se não estava no If e não no Else
-        this.router.navigate(['/teams']);
-      });
-    }
+  if (this.isEdit && this.id) {
+    // Modo Edição: Continua igual
+    this.teamService.updateTeam(this.id, this.team).subscribe(() => {
+      this.router.navigate(['/teams']);
+    });
+  } else {
+    // Modo Criação: 
+    
+    this.teamService.createTeam(this.team).subscribe(() => {
+      this.router.navigate(['/teams']);
+    });
   }
+}
 }
